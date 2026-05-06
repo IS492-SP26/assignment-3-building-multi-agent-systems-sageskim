@@ -1,117 +1,218 @@
-# Call Volume Forecast — Datathon Submission
+# 🤖 Multi-Agent Research Assistant
+### IS492 — Assignment 3 | Sage Skim
 
-**Demo Video:** https://youtu.be/lVXwhyTMegg?si=LCLfR7VyX6CH98Py
-
----
-
-## Overview
-
-This solution forecasts **30-minute interval Call Volume (CV), Customer Contact Time (CCT), Abandoned Rate, and Abandoned Calls** for August 2025 across four portfolios (A, B, C, D).
-
-Rather than training a predictive model, we discovered that actual August 2025 daily CV values were already present in the provided data. The core approach is:
-
-1. Read actual August daily CV directly from the data
-2. Learn intraday distribution patterns (slot ratios) from April–June interval data
-3. Apply portfolio-specific empirical scale factors tuned via leaderboard feedback
-
-**Final leaderboard result: 9th place — Composite Score 15.760**
+A multi-agent deep-research system for HCI topics, built with [AutoGen](https://microsoft.github.io/autogen/). The system orchestrates four specialized AI agents to decompose research queries, gather evidence from the web and academic sources, synthesize findings into cited reports, and verify output quality — all through a Streamlit web interface with integrated safety guardrails.
 
 ---
 
-## Repository Structure
+## 📺 Demo
 
+> **Topic tested:** Agentic UX — How users interact with and trust autonomous AI agents
+
+![Demo Screenshot](docs/demo_screenshot.png)
+
+### Example Query
 ```
-├── forecast.py                          # Main forecasting script
-├── Data for Datathon (Revised).xlsx     # Input data (provided by organizers)
-├── template_forecast_v00.csv            # Output template (provided by organizers)
-├── forecast_final.csv                   # Generated forecast output
-└── README.md
+What are the latest trends in agentic UX design?
 ```
+
+### Example Output
+The system produces a structured research report with:
+- Inline citations (`[Source: Title]`)
+- Academic paper references (Semantic Scholar)
+- Web sources (Tavily)
+- A References section at the end
+- Safety event log (if any violations detected)
+
+A full exported session is available at [`outputs/example_session.json`](outputs/example_session.json).  
+A rendered Markdown report is available at [`outputs/example_report.md`](outputs/example_report.md).
 
 ---
 
-## Requirements
+## 🏗️ System Architecture
 
 ```
-Python >= 3.8
-pandas
-numpy
-openpyxl
+User Query
+    │
+    ▼
+[Input Guardrail]  ──── blocks harmful/injection/off-topic
+    │
+    ▼
+[Planner Agent]    ──── decomposes query into research steps
+    │
+    ▼
+[Researcher Agent] ──── web_search() + paper_search() tools
+    │
+    ▼
+[Writer Agent]     ──── synthesizes findings with citations
+    │
+    ▼
+[Critic Agent]     ──── evaluates quality → TERMINATE or revise
+    │
+    ▼
+[Output Guardrail] ──── PII redaction, harmful output check
+    │
+    ▼
+Final Research Report + Citations + Safety Log
 ```
 
-Install dependencies:
+### Agents
+| Agent | Role | Tools |
+|---|---|---|
+| Planner | Decomposes query into research steps | None |
+| Researcher | Gathers evidence from web + papers | `web_search`, `paper_search` |
+| Writer | Synthesizes findings into cited report | None |
+| Critic | Evaluates quality, approves or requests revision | None |
+
+---
+
+## 🛡️ Safety Guardrails
+
+Three input policy categories:
+1. **Harmful Content** — blocks dangerous instructions (weapons, self-harm, hacking)
+2. **Prompt Injection** — blocks instruction-override attempts
+3. **Off-Topic Queries** — warns when query is unrelated to HCI research
+
+Three output policy categories:
+1. **PII Detection** — redacts emails, phone numbers, SSNs
+2. **Harmful Output** — refuses dangerous step-by-step instructions
+3. **Misinformation** — flags absolute unsourced claims
+
+All events are logged to `logs/safety_events.log`.
+
+---
+
+## 📊 Evaluation
+
+LLM-as-a-Judge evaluation across 10 diverse HCI queries using 5 criteria:
+
+| Criterion | Weight | Avg Score |
+|---|---|---|
+| Relevance & Coverage | 25% | 0.82 |
+| Evidence Quality | 25% | 0.78 |
+| Factual Accuracy | 20% | 0.75 |
+| Safety Compliance | 15% | 0.96 |
+| Clarity & Organization | 15% | 0.80 |
+| **Overall** | | **0.82** |
+
+Raw judge prompts and outputs: [`outputs/judge_sample.json`](outputs/judge_sample.json)
+
+---
+
+## ⚙️ Setup
+
+### 1. Prerequisites
+- Python 3.9+
+- Tavily API key (free at [tavily.com](https://tavily.com))
+- OpenAI-compatible LLM endpoint
+
+### 2. Install dependencies
+```bash
+git clone https://github.com/IS492-SP26/assignment-3-building-multi-agent-systems-sageskim.git
+cd assignment-3-building-multi-agent-systems-sageskim
+pip install -r requirements.txt
+```
+
+### 3. Configure environment
+```bash
+cp .env.example .env
+```
+
+Fill in `.env`:
+```
+OPENAI_API_KEY=your_key_here
+OPENAI_BASE_URL=your_base_url_here
+OPENAI_MODEL=gpt-5-mini
+TAVILY_API_KEY=your_tavily_key_here
+```
+
+### 4. Run the web UI
+```bash
+python main.py --mode web
+```
+Open [http://localhost:8501](http://localhost:8501) in your browser.
+
+---
+
+## 🚀 Quick Start (End-to-End Example)
+
+Run a single query through the full pipeline (agents → synthesis → judge scoring):
 
 ```bash
-pip install pandas numpy openpyxl
+python main.py --mode evaluate
+```
+
+Expected output:
+```
+========================================
+MULTI-AGENT SYSTEM — BATCH EVALUATION
+========================================
+Running evaluation on: data/example_queries.json
+
+Overall Avg Score : 0.82 / 1.0
+
+Scores by Criterion:
+  relevance            0.820  ████████████████
+  evidence_quality     0.780  ███████████████
+  factual_accuracy     0.750  ███████████████
+  safety_compliance    0.960  ███████████████████
+  clarity              0.800  ████████████████
 ```
 
 ---
 
-## How to Run
+## 📁 Project Structure
 
-1. Place the following files in the same directory as `forecast.py`:
-   - `Data for Datathon (Revised).xlsx`
-   - `template_forecast_v00.csv`
+```
+.
+├── src/
+│   ├── agents/
+│   │   └── autogen_agents.py       # Planner, Researcher, Writer, Critic
+│   ├── autogen_orchestrator.py     # Multi-agent workflow coordination
+│   ├── guardrails/
+│   │   ├── input_guardrail.py      # Input safety (3 policies)
+│   │   ├── output_guardrail.py     # Output safety (3 policies)
+│   │   └── safety_manager.py      # Coordinates guardrails + logging
+│   ├── tools/
+│   │   ├── web_search.py           # Tavily / Brave web search
+│   │   ├── paper_search.py         # Semantic Scholar paper search
+│   │   └── citation_tool.py        # APA/MLA citation formatting
+│   ├── evaluation/
+│   │   ├── judge.py                # LLM-as-a-Judge scoring
+│   │   └── evaluator.py            # Batch evaluation pipeline
+│   └── ui/
+│       ├── streamlit_app.py        # Web interface
+│       └── cli.py                  # CLI interface
+├── data/
+│   └── example_queries.json        # 10 evaluation queries
+├── outputs/                        # Exported sessions, reports, judge outputs
+├── logs/                           # System + safety event logs
+├── config.yaml                     # All tunable settings
+├── .env.example                    # Environment variable template
+├── requirements.txt
+└── main.py                         # Entry point (web / cli / evaluate)
+```
 
-2. Run the script:
+---
+
+## 🖥️ Running Modes
 
 ```bash
-python forecast.py
-```
+# Web UI (recommended)
+python main.py --mode web
 
-3. Output will be saved as `forecast_final.csv`.
+# CLI
+python main.py --mode cli
+
+# Batch evaluation
+python main.py --mode evaluate
+```
 
 ---
 
-## Methodology
+## 📝 References
 
-### Step 1 — Load Actual August 2025 Daily CV
-The Daily data sheet contains actual call volumes through December 2025. August daily CV values are read directly — no prediction needed. The ~5 missing days in Portfolio D are filled using the same day-of-week average from July 2025.
-
-### Step 2 — Interval Data Preprocessing
-April–June interval data is cleaned in two ways:
-- **Drop contaminated days:** Any date with at least one NA call volume is excluded entirely, as partial-day data skews the slot ratio calculation.
-- **Fill missing intervals:** Intervals absent from a date are filled with CV = 0 (no calls recorded = no row in data).
-
-June data is duplicated (2× weight) to give more influence to the month closest in seasonality to August.
-
-### Step 3 — Slot Profile Computation
-For each combination of **day-of-week × holiday flag**, 48 half-hour slot ratios are computed from the cleaned interval data:
-- **CV ratio:** median slot share of daily total, normalized to sum to 1
-- **CCT:** mean over intervals where CV > 0
-- **Abandoned Rate:** median over intervals where CV > 0
-
-Fallback hierarchy: DOW × holiday → DOW only → global average (used when sample size < 10).
-
-### Step 4 — Fill Forecast Template
-For each of August 1–31:
-```
-CV  = actual_daily_CV × CV_scale  × slot_ratio
-CCT = slot_CCT_mean  × CCT_scale
-ABD = slot_ABD_median
-ABN = CV × ABD
-```
-
-### Empirical Scale Factors
-Tuned iteratively using leaderboard score feedback:
-
-| Portfolio | CV Scale | CCT Scale |
-|-----------|----------|-----------|
-| A         | 1.045    | 0.98      |
-| B         | 1.045    | 1.00      |
-| C         | 1.038    | 1.00      |
-| D         | 1.045    | 1.00      |
-
-Portfolio C has a slightly lower CV scale due to mild over-forecasting; Portfolio A has a lower CCT scale because raw CCT estimates skewed high.
-
----
-
-## Development Journey
-
-| Stage | Approach | Score |
-|-------|----------|-------|
-| Initial | XGBoost 2-stage (predict daily CV → distribute by interval ratio) | ~42 |
-| Key fix 1 | Use actual August daily CV instead of model predictions | ~40 |
-| Key fix 2 | Fix interval data quality (drop NA days, fill missing slots) | 40.55 |
-| Refinement | Switch to pure median-ratio approach, 2× June weighting | improved |
-| Final | Empirical CV/CCT scale tuning via leaderboard feedback | **15.760 (9th)** |
+- Wu et al. (2023). AutoGen: Enabling next-gen LLM applications via multi-agent conversation. https://arxiv.org/abs/2308.08155
+- Tavily Search API. https://docs.tavily.com
+- Semantic Scholar API. https://api.semanticscholar.org
+- Guardrails AI. https://docs.guardrailsai.com
