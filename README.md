@@ -1,5 +1,5 @@
 # 🤖 Multi-Agent Research Assistant
-### IS492 — Assignment 3 | Sage Skim
+### IS492 — Assignment 3 | Sage Kim
 
 A multi-agent deep-research system for HCI topics, built with [AutoGen](https://microsoft.github.io/autogen/). The system orchestrates four specialized AI agents to decompose research queries, gather evidence from the web and academic sources, synthesize findings into cited reports, and verify output quality — all through a Streamlit web interface with integrated safety guardrails.
 
