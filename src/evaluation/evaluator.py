@@ -1,3 +1,5 @@
+import nest_asyncio
+nest_asyncio.apply()
 """
 System Evaluator
 Runs batch evaluations and generates reports.
