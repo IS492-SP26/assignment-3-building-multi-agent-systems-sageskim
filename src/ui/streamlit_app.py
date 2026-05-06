@@ -12,6 +12,8 @@ from pathlib import Path
 project_root = Path(__file__).parent.parent.parent
 sys.path.insert(0, str(project_root))
 
+import nest_asyncio
+nest_asyncio.apply()
 import streamlit as st
 import asyncio
 import yaml

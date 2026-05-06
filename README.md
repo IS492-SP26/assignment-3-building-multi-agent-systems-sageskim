@@ -9,7 +9,20 @@ A multi-agent deep-research system for HCI topics, built with [AutoGen](https://
 
 > **Topic tested:** Agentic UX — How users interact with and trust autonomous AI agents
 
-![Demo Screenshot](docs/demo_screenshot.png)
+### Normal Query Response
+![UI Response](docs/UI-1.png)
+![UI Response 2](docs/UI-2.png)
+![UI References](docs/UI-3.png)
+
+### Agent Traces
+![Agent Traces 1](docs/trace-1.png)
+![Agent Traces 2](docs/trace-2.png)
+
+### Safety Guardrail — Unsafe Query Blocked
+![Unsafe Query Blocked](docs/unsafe.png)
+
+### Safety Event Log
+![Safety Log](docs/safety-log.png)
 
 ### Example Query
 ```

@@ -169,23 +169,11 @@ You have access to two tools: web_search and paper_search. When conducting resea
     else:
         system_message = default_system_message
 
-    # Wrap tools in FunctionTool
-    web_search_tool = FunctionTool(
-        web_search,
-        description="Search the web for articles, blog posts, and general information. Returns formatted search results with titles, URLs, and snippets."
-    )
-    
-    paper_search_tool = FunctionTool(
-        paper_search,
-        description="Search academic papers on Semantic Scholar. Returns papers with authors, abstracts, citation counts, and URLs. Use year_from parameter to filter recent papers."
-    )
-
-    # Create the researcher with tool access
+    # No tool calling — evidence is pre-fetched by the orchestrator
     researcher = AssistantAgent(
         name="Researcher",
         model_client=model_client,
-        tools=[web_search_tool, paper_search_tool],
-        description="Gathers evidence from web and academic sources using search tools",
+        description="Analyzes pre-fetched evidence from web and academic sources",
         system_message=system_message,
     )
     
@@ -255,16 +243,8 @@ def create_critic_agent(config: Dict[str, Any], model_client: OpenAIChatCompleti
     agent_config = config.get("agents", {}).get("critic", {})
     
     # Load system prompt from config or use default
-    default_system_message = """You are a Research Critic. Your job is to evaluate the quality and accuracy of research outputs.
-
-Evaluate the research and writing on these criteria:
-1. **Relevance**: Does it answer the original query?
-2. **Evidence Quality**: Are sources credible and well-cited?
-3. **Completeness**: Are all aspects of the query addressed?
-4. **Accuracy**: Are there any factual errors or contradictions?
-5. **Clarity**: Is the writing clear and well-organized?
-
-Provide constructive but thorough feedback. End your evaluation with either "TERMINATE" if approved, or suggest specific improvements."""
+    default_system_message = """You are a Research Critic. Write 1-2 sentences of feedback on the Writer response quality (relevance, evidence, clarity).
+Always end your message with: TERMINATE"""
 
     # Use custom prompt from config if available
     custom_prompt = agent_config.get("system_prompt", "")
