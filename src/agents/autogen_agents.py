@@ -44,11 +44,14 @@ def create_model_client(config: Dict[str, Any]) -> OpenAIChatCompletionClient:
             model=model_config.get("name", "llama-3.3-70b-versatile"),
             api_key=api_key,
             base_url="https://api.groq.com/openai/v1",
-            model_capabilities={
+            model_info={
                 "json_output": False,
                 "vision": False,
                 "function_calling": True,
-            }
+                "family": ModelFamily.UNKNOWN,
+                "structured_output": False,
+            },
+            parallel_tool_calls=False,
         )
     
     # OpenAI configuration
@@ -151,12 +154,13 @@ def create_researcher_agent(config: Dict[str, Any], model_client: OpenAIChatComp
     # Load system prompt from config or use default
     default_system_message = """You are a Research Assistant. Your job is to gather high-quality information from academic papers and web sources.
 
-You have access to tools for web search and paper search. When conducting research:
-1. Use both web search and paper search for comprehensive coverage
-2. Look for recent, high-quality sources
-3. Extract key findings, quotes, and data
-4. Note all source URLs and citations
-5. Gather evidence that directly addresses the research query"""
+You have access to two tools: web_search and paper_search. When conducting research:
+1. IMPORTANT: Call only ONE tool at a time. Never call multiple tools simultaneously.
+2. First call web_search to find recent articles and web sources.
+3. Then call paper_search to find academic papers.
+4. Extract key findings, quotes, and data from results.
+5. Note all source URLs and citations.
+6. After gathering enough sources (at least 3-5), summarize your findings clearly."""
 
     # Use custom prompt from config if available
     custom_prompt = agent_config.get("system_prompt", "")

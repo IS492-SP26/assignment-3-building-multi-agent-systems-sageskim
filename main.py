@@ -28,47 +28,68 @@ def run_web():
 
 
 async def run_evaluation():
-    """Run system evaluation."""
+    """Run full batch evaluation using SystemEvaluator + LLM-as-a-Judge."""
     import yaml
     from dotenv import load_dotenv
     from src.autogen_orchestrator import AutoGenOrchestrator
-    
-    # Load environment variables
+    from src.evaluation.evaluator import SystemEvaluator
+
     load_dotenv()
 
-    # Load config
-    with open("config.yaml", 'r') as f:
+    with open("config.yaml", "r") as f:
         config = yaml.safe_load(f)
 
-    # Initialize AutoGen orchestrator
-    print("Initializing AutoGen orchestrator...")
+    print("=" * 70)
+    print("MULTI-AGENT SYSTEM — BATCH EVALUATION")
+    print("=" * 70)
+
+    # Initialize orchestrator
+    print("\nInitializing orchestrator...")
     orchestrator = AutoGenOrchestrator(config)
-    
-    # For now, run a simple test query
-    # TODO: Integrate with SystemEvaluator for full evaluation
-    # Suggested implementation:
-    # - Import SystemEvaluator from src/evaluation/evaluator.py
-    # - Load test queries from data/example_queries.json
-    # - Run batch evaluation and print/save the report summary
+
+    # Initialize evaluator
+    evaluator = SystemEvaluator(config, orchestrator=orchestrator)
+
+    # Choose query file (fall back to example_queries if test file missing)
+    import os
+    query_file = "data/example_queries.json"
+    if not os.path.exists(query_file):
+        print(f"Query file not found: {query_file}")
+        return
+
+    print(f"Running evaluation on: {query_file}")
+    print("This may take several minutes...\n")
+
+    # Run evaluation
+    report = await evaluator.evaluate_system(query_file)
+
+    # Print summary
     print("\n" + "=" * 70)
-    print("RUNNING TEST QUERY")
+    print("EVALUATION RESULTS")
     print("=" * 70)
-    
-    test_query = "What are the key principles of accessible user interface design?"
-    print(f"\nQuery: {test_query}\n")
-    
-    result = orchestrator.process_query(test_query)
-    
-    print("\n" + "=" * 70)
-    print("RESULTS")
-    print("=" * 70)
-    print(f"\nResponse:\n{result.get('response', 'No response generated')}")
-    print(f"\nMetadata:")
-    print(f"  - Messages: {result.get('metadata', {}).get('num_messages', 0)}")
-    print(f"  - Sources: {result.get('metadata', {}).get('num_sources', 0)}")
-    
-    print("\n" + "=" * 70)
-    print("Note: Full evaluation with SystemEvaluator can be implemented")
+
+    summary = report.get("summary", {})
+    scores  = report.get("scores", {})
+
+    print(f"\nTotal Queries : {summary.get('total_queries', 0)}")
+    print(f"Successful     : {summary.get('successful', 0)}")
+    print(f"Failed         : {summary.get('failed', 0)}")
+    print(f"Success Rate   : {summary.get('success_rate', 0):.1%}")
+    print(f"\nOverall Avg Score : {scores.get('overall_average', 0):.3f} / 1.0")
+
+    print("\nScores by Criterion:")
+    for criterion, score in scores.get("by_criterion", {}).items():
+        bar = "█" * int(score * 20)
+        print(f"  {criterion:<20} {score:.3f}  {bar}")
+
+    best  = report.get("best_result")
+    worst = report.get("worst_result")
+    if best:
+        print(f"\nBest  query (score {best['score']:.3f}): {best['query'][:70]}")
+    if worst:
+        print(f"Worst query (score {worst['score']:.3f}): {worst['query'][:70]}")
+
+    print("\nFull results saved to outputs/")
     print("=" * 70)
 
 

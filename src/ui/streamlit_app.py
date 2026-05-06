@@ -275,9 +275,20 @@ def display_sidebar():
 
         st.title("📊 Statistics")
 
-        # TODO: Get actual statistics
         st.metric("Total Queries", len(st.session_state.history))
-        st.metric("Safety Events", 0)  # TODO: Get from safety manager
+
+        # Get live safety stats from safety manager
+        safety_stats = {"blocked": 0, "sanitized": 0, "total_checks": 0}
+        orch = st.session_state.get("orchestrator")
+        if orch and hasattr(orch, "safety_manager"):
+            safety_stats = orch.safety_manager.get_safety_stats()
+
+        st.metric("Safety Events", safety_stats.get("blocked", 0) + safety_stats.get("sanitized", 0))
+
+        if safety_stats.get("total_checks", 0) > 0:
+            cols = st.columns(2)
+            cols[0].metric("🚫 Blocked",   safety_stats.get("blocked",   0))
+            cols[1].metric("✂️ Sanitized", safety_stats.get("sanitized", 0))
 
         st.divider()
 
@@ -393,8 +404,28 @@ def main():
     if st.session_state.show_safety_log:
         st.divider()
         st.markdown("### 🛡️ Safety Event Log")
-        # TODO: Display safety events from safety manager
-        st.info("No safety events recorded.")
+
+        orch = st.session_state.get("orchestrator")
+        events = []
+        if orch and hasattr(orch, "safety_manager"):
+            events = orch.safety_manager.get_safety_events()
+
+        if not events:
+            st.info("No safety events recorded yet.")
+        else:
+            for ev in reversed(events):  # newest first
+                ev_type   = ev.get("type", "?").upper()
+                action    = ev.get("action", "?").upper()
+                ts        = ev.get("timestamp", "")[:19]
+                preview   = ev.get("content_preview", "")
+                violations = ev.get("violations", [])
+
+                color = "🟥" if action in ("BLOCK", "REFUSE") else "🟧" if action == "SANITIZE" else "🟨"
+                with st.expander(f"{color} [{ts}] {ev_type} — {action} ({len(violations)} violation(s))", expanded=False):
+                    st.markdown(f"**Content preview:** ")
+                    for v in violations:
+                        st.markdown(
+                            f"- **{v.get("validator", "?").upper()}** ({v.get("severity", "?")}) — {v.get("reason", "?")}")
 
 
 if __name__ == "__main__":

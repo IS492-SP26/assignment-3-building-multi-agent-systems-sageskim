@@ -16,6 +16,7 @@ import asyncio
 from typing import Dict, Any, List, Optional
 
 from src.agents.autogen_agents import create_research_team
+from src.guardrails.safety_manager import SafetyManager
 
 
 class AutoGenOrchestrator:
@@ -37,6 +38,9 @@ class AutoGenOrchestrator:
         self.config = config
         self.logger = logging.getLogger("autogen_orchestrator")
         
+        # Initialize safety manager
+        self.safety_manager = SafetyManager(config)
+        
         # Create the research team
         self.logger.info("Creating research team...")
         self.team = create_research_team(config)
@@ -46,7 +50,7 @@ class AutoGenOrchestrator:
         # Workflow trace for debugging and UI display
         self.workflow_trace: List[Dict[str, Any]] = []
 
-    def process_query(self, query: str, max_rounds: int = 20) -> Dict[str, Any]:
+    def process_query(self, query: str, max_rounds: int = 8) -> Dict[str, Any]:
         """
         Process a research query through the multi-agent system.
 
@@ -62,22 +66,52 @@ class AutoGenOrchestrator:
             - metadata: Additional information about the process
         """
         self.logger.info(f"Processing query: {query}")
-        
+
+        # --- Input Safety Check ---
+        input_safety = self.safety_manager.check_input_safety(query)
+        if not input_safety["safe"]:
+            return {
+                "query": query,
+                "response": input_safety.get("refusal_message", "Request blocked by safety policy."),
+                "conversation_history": [],
+                "metadata": {
+                    "safety_blocked": True,
+                    "safety_events": [{
+                        "type": "input",
+                        "action": input_safety.get("action", "block"),
+                        "violations": input_safety.get("violations", []),
+                    }],
+                    "num_messages": 0,
+                    "num_sources": 0,
+                }
+            }
+        # Use sanitized query (e.g. truncated if too long)
+        query = input_safety.get("query", query)
+
         try:
-            # Run the async query processing
-            loop = asyncio.get_event_loop()
-            if loop.is_running():
-                # If we're already in an async context, create a new loop
-                import concurrent.futures
-                with concurrent.futures.ThreadPoolExecutor() as pool:
-                    result = pool.submit(
-                        asyncio.run, 
-                        self._process_query_async(query, max_rounds)
-                    ).result()
-            else:
-                result = loop.run_until_complete(self._process_query_async(query, max_rounds))
+            # Always run in a fresh thread with its own event loop
+            # Create team inside the thread to avoid event loop conflicts
+            import concurrent.futures
+            with concurrent.futures.ThreadPoolExecutor(max_workers=1) as pool:
+                future = pool.submit(self._run_in_new_loop, query, max_rounds)
+                result = future.result(timeout=180)
             
             self.logger.info("Query processing complete")
+
+            # --- Output Safety Check ---
+            response_text = result.get("response", "")
+            output_safety = self.safety_manager.check_output_safety(response_text)
+
+            if not output_safety["safe"] or output_safety.get("action") in ("sanitize", "refuse"):
+                result["response"] = output_safety["response"]
+                safety_events = result.get("metadata", {}).get("safety_events", [])
+                safety_events.append({
+                    "type": "output",
+                    "action": output_safety.get("action"),
+                    "violations": output_safety.get("violations", []),
+                })
+                result.setdefault("metadata", {})["safety_events"] = safety_events
+
             return result
             
         except Exception as e:
@@ -90,7 +124,13 @@ class AutoGenOrchestrator:
                 "metadata": {"error": True}
             }
     
-    async def _process_query_async(self, query: str, max_rounds: int = 20) -> Dict[str, Any]:
+    def _run_in_new_loop(self, query: str, max_rounds: int) -> Dict[str, Any]:
+        """Run query in a completely fresh event loop with a new team instance."""
+        # Create a brand new team in this thread (avoids event loop binding issues)
+        team = create_research_team(self.config)
+        return asyncio.run(self._process_query_async(query, max_rounds, team))
+
+    async def _process_query_async(self, query: str, max_rounds: int = 8, team=None) -> Dict[str, Any]:
         """
         Async implementation of query processing.
         
@@ -111,7 +151,9 @@ Please work together to answer this query comprehensively:
 4. Critic: Evaluate the quality and provide feedback"""
         
         # Run the team
-        result = await self.team.run(task=task_message)
+        if team is None:
+            team = create_research_team(self.config)
+        result = await team.run(task=task_message)
         
         # Extract conversation history
         messages = []
