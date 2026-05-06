@@ -101,12 +101,12 @@ LLM-as-a-Judge evaluation across 10 diverse HCI queries using 5 criteria:
 
 | Criterion | Weight | Avg Score |
 |---|---|---|
-| Relevance & Coverage | 25% | 0.82 |
-| Evidence Quality | 25% | 0.78 |
-| Factual Accuracy | 20% | 0.75 |
-| Safety Compliance | 15% | 0.96 |
-| Clarity & Organization | 15% | 0.80 |
-| **Overall** | | **0.82** |
+| Relevance & Coverage | 25% | 0.705 |
+| Evidence Quality | 25% | 0.320 |
+| Factual Accuracy | 20% | 0.440 |
+| Safety Compliance | 15% | 0.500 |
+| Clarity & Organization | 15% | 0.465 |
+| **Overall** | | **0.489** |
 
 Raw judge prompts and outputs: [`outputs/judge_sample.json`](outputs/judge_sample.json)
 
