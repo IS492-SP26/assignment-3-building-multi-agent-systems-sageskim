@@ -1,0 +1,122 @@
+ERROR:tools.paper_search:Error searching papers: HTTP status 403 Forbidden.
+ERROR:evaluation.judge:JSON decode error: Invalid control character at: line 3 column 336 (char 355)
+ERROR:evaluation.judge:Raw judgment: {
+    "score": 0.8,
+    "reasoning": "The response provides a comprehensive overview of the key principles of explainable AI (XAI) for novice users. The author has structured the response around seven
+ERROR:evaluation.judge:JSON decode error: Invalid control character at: line 3 column 386 (char 405)
+ERROR:evaluation.judge:Raw judgment: {
+    "score": 0.8,
+    "reasoning": "The response provides a comprehensive overview of the key principles of explainable AI (XAI) for novice users. It accurately identifies the importance of transpar
+ERROR:evaluation.judge:JSON decode error: Invalid control character at: line 3 column 501 (char 520)
+ERROR:evaluation.judge:Raw judgment: {
+    "score": 0.8,
+    "reasoning": "The response provided is well-structured and easy to follow. The use of headings, subheadings, and bullet points makes it clear and concise. The explanation of th
+ERROR:tools.paper_search:Error searching papers: HTTP status 403 Forbidden.
+ERROR:evaluation.judge:JSON decode error: Invalid control character at: line 3 column 302 (char 321)
+ERROR:evaluation.judge:Raw judgment: {
+    "score": 0.9,
+    "reasoning": "The response demonstrates a high quality of citations and evidence used to support the argument on the evolution of AR usability over the past 5 years. The author
+ERROR:evaluation.judge:JSON decode error: Invalid control character at: line 3 column 335 (char 355)
+ERROR:evaluation.judge:Raw judgment: {
+    "score": 0.85,
+    "reasoning": "The response demonstrates a high level of factual accuracy and consistency in its discussion of AR usability evolution over the past 5 years. The author provides
+ERROR:evaluation.judge:JSON decode error: Invalid control character at: line 3 column 225 (char 245)
+ERROR:evaluation.judge:Raw judgment: {
+    "score": 0.85,
+    "reasoning": "The response is well-structured and easy to follow, with clear headings and concise paragraphs. The language is technical but accessible, and the use of examples
+ERROR:tools.paper_search:Error searching papers: HTTP status 403 Forbidden.
+ERROR:tools.paper_search:Error searching papers: HTTP status 403 Forbidden.
+ERROR:evaluation.judge:JSON decode error: Invalid control character at: line 3 column 396 (char 415)
+ERROR:evaluation.judge:Raw judgment: {
+    "score": 0.8,
+    "reasoning": "The response demonstrates a good understanding of various approaches to measuring user experience in mobile applications. The author has provided a comprehensive 
+ERROR:tools.paper_search:Error searching papers: HTTP status 403 Forbidden.
+ERROR:evaluation.judge:JSON decode error: Invalid control character at: line 3 column 237 (char 256)
+ERROR:evaluation.judge:Raw judgment: {
+    "score": 0.6,
+    "reasoning": "The response provides a comprehensive overview of conversational AI applications in healthcare, drawing from industry insights and case studies. However, the qual
+ERROR:evaluation.judge:JSON decode error: Invalid control character at: line 3 column 463 (char 482)
+ERROR:evaluation.judge:Raw judgment: {
+    "score": 0.8,
+    "reasoning": "The response demonstrates a high level of factual accuracy in its description of conversational AI applications in healthcare. The report cites various industry i
+ERROR:evaluation.judge:JSON decode error: Invalid control character at: line 3 column 418 (char 437)
+ERROR:evaluation.judge:Raw judgment: {
+    "score": 0.9,
+    "reasoning": "The response is well-written and informative, providing a comprehensive overview of the latest developments in conversational AI for healthcare. The content is fr
+ERROR:evaluation.judge:JSON decode error: Invalid control character at: line 3 column 422 (char 442)
+ERROR:evaluation.judge:Raw judgment: {
+    "score": 0.85,
+    "reasoning": "The response is well-organized and clearly structured, with a logical flow of ideas and effective use of headings and subheadings. The language is formal and pro
+ERROR:tools.paper_search:Error searching papers: HTTP status 403 Forbidden.
+ERROR:evaluation.judge:JSON decode error: Invalid control character at: line 3 column 561 (char 580)
+ERROR:evaluation.judge:Raw judgment: {
+    "score": 0.8,
+    "reasoning": "The response provides a comprehensive overview of the differences in design patterns for accessibility across web and mobile platforms. The author cites various i
+ERROR:evaluation.judge:JSON decode error: Invalid control character at: line 3 column 480 (char 500)
+ERROR:evaluation.judge:Raw judgment: {
+    "score": 0.85,
+    "reasoning": "The response demonstrates a high level of factual accuracy and consistency in addressing the differences in design patterns for accessibility across web and mobi
+ERROR:evaluation.judge:JSON decode error: Invalid control character at: line 3 column 393 (char 412)
+ERROR:evaluation.judge:Raw judgment: {
+    "score": 0.9,
+    "reasoning": "The response is well-structured and easy to follow, with clear headings and concise subheadings. The use of bullet points and numbered lists helps to break down c
+ERROR:tools.paper_search:Error searching papers: HTTP status 403 Forbidden.
+ERROR:tools.paper_search:Error searching papers: HTTP status 403 Forbidden.
+ERROR:tools.paper_search:Error searching papers: HTTP status 403 Forbidden.
+ERROR:evaluation.judge:JSON decode error: Invalid control character at: line 3 column 185 (char 204)
+ERROR:evaluation.judge:Raw judgment: {
+    "score": 0.8,
+    "reasoning": "The response demonstrates a good understanding of the topic and the ability to identify relevant sources. However, there are some limitations in the evidence qual
+ERROR:evaluation.judge:JSON decode error: Invalid control character at: line 3 column 224 (char 243)
+ERROR:evaluation.judge:Raw judgment: {
+    "score": 0.8,
+    "reasoning": "The response demonstrates a good understanding of the topic and provides relevant information on emerging trends in AI-driven prototyping tools. However, there ar
+ERROR:evaluation.judge:JSON decode error: Invalid control character at: line 3 column 366 (char 385)
+ERROR:evaluation.judge:Raw judgment: {
+    "score": 0.9,
+    "reasoning": "The response demonstrates a high level of safety compliance for the given criterion. The content is informative, well-structured, and focused on emerging trends i
+ERROR:evaluation.judge:JSON decode error: Invalid control character at: line 3 column 516 (char 536)
+ERROR:evaluation.judge:Raw judgment: {
+    "score": 0.85,
+    "reasoning": "The response demonstrates a high level of clarity and organization, particularly in the Research Report section (### 3. Writer: Research Report). The introductio
+ERROR:tools.paper_search:Error searching papers: HTTP status 403 Forbidden.
+ERROR:evaluation.judge:JSON decode error: Invalid control character at: line 3 column 248 (char 267)
+ERROR:evaluation.judge:Raw judgment: {
+    "score": 0.8,
+    "reasoning": "The response demonstrates a good understanding of the importance of cultural factors in mobile app design and provides relevant examples from various sources. How
+ERROR:evaluation.judge:JSON decode error: Invalid control character at: line 3 column 425 (char 444)
+ERROR:evaluation.judge:Raw judgment: {
+    "score": 0.8,
+    "reasoning": "The response demonstrates a good understanding of cultural factors influencing mobile app design, leveraging Hofstede's cultural dimensions and providing practica
+======================================================================
+MULTI-AGENT SYSTEM — BATCH EVALUATION
+======================================================================
+
+Initializing orchestrator...
+Running evaluation on: data/example_queries.json
+This may take several minutes...
+
+
+======================================================================
+EVALUATION RESULTS
+======================================================================
+
+Total Queries : 10
+Successful     : 10
+Failed         : 0
+Success Rate   : 100.0%
+
+Overall Avg Score : 0.496 / 1.0
+
+Scores by Criterion:
+  relevance            0.870  █████████████████
+  evidence_quality     0.180  ███
+  factual_accuracy     0.290  █████
+  safety_compliance    0.780  ███████████████
+  clarity              0.390  ███████
+
+Best  query (score 0.780): What are ethical considerations in using AI for education?
+Worst query (score 0.225): What are the latest developments in conversational AI for healthcare?
+
+Full results saved to outputs/
+======================================================================

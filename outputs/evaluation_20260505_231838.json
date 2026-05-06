@@ -1,0 +1,429 @@
+{
+  "timestamp": "2026-05-05T23:18:38.905811",
+  "summary": {
+    "total_queries": 10,
+    "successful": 10,
+    "failed": 0,
+    "success_rate": 1.0
+  },
+  "scores": {
+    "overall_average": 0.0,
+    "by_criterion": {
+      "relevance": 0.0,
+      "evidence_quality": 0.0,
+      "factual_accuracy": 0.0,
+      "safety_compliance": 0.0,
+      "clarity": 0.0
+    }
+  },
+  "best_result": {
+    "query": "What are the key principles of explainable AI for novice users?",
+    "score": 0.0
+  },
+  "worst_result": {
+    "query": "What are the key principles of explainable AI for novice users?",
+    "score": 0.0
+  },
+  "detailed_results": [
+    {
+      "query": "What are the key principles of explainable AI for novice users?",
+      "response": "An error occurred: asyncio.run() cannot be called from a running event loop",
+      "evaluation": {
+        "query": "What are the key principles of explainable AI for novice users?",
+        "overall_score": 0.0,
+        "criterion_scores": {
+          "relevance": {
+            "score": 0.0,
+            "reasoning": "Error during evaluation: Error code: 404 - {'error': {'message': 'The model `qwen/qwen3-8b` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'code': 'model_not_found'}}",
+            "criterion": "relevance"
+          },
+          "evidence_quality": {
+            "score": 0.0,
+            "reasoning": "Error during evaluation: Error code: 404 - {'error': {'message': 'The model `qwen/qwen3-8b` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'code': 'model_not_found'}}",
+            "criterion": "evidence_quality"
+          },
+          "factual_accuracy": {
+            "score": 0.0,
+            "reasoning": "Error during evaluation: Error code: 404 - {'error': {'message': 'The model `qwen/qwen3-8b` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'code': 'model_not_found'}}",
+            "criterion": "factual_accuracy"
+          },
+          "safety_compliance": {
+            "score": 0.0,
+            "reasoning": "Error during evaluation: Error code: 404 - {'error': {'message': 'The model `qwen/qwen3-8b` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'code': 'model_not_found'}}",
+            "criterion": "safety_compliance"
+          },
+          "clarity": {
+            "score": 0.0,
+            "reasoning": "Error during evaluation: Error code: 404 - {'error': {'message': 'The model `qwen/qwen3-8b` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'code': 'model_not_found'}}",
+            "criterion": "clarity"
+          }
+        },
+        "feedback": []
+      },
+      "metadata": {
+        "error": true
+      },
+      "ground_truth": "Explainable AI for novices should focus on transparency, simple visualizations, interactive explanations, and building user trust through understandable model behavior."
+    },
+    {
+      "query": "How has AR usability evolved in the past 5 years?",
+      "response": "An error occurred: asyncio.run() cannot be called from a running event loop",
+      "evaluation": {
+        "query": "How has AR usability evolved in the past 5 years?",
+        "overall_score": 0.0,
+        "criterion_scores": {
+          "relevance": {
+            "score": 0.0,
+            "reasoning": "Error during evaluation: Error code: 404 - {'error': {'message': 'The model `qwen/qwen3-8b` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'code': 'model_not_found'}}",
+            "criterion": "relevance"
+          },
+          "evidence_quality": {
+            "score": 0.0,
+            "reasoning": "Error during evaluation: Error code: 404 - {'error': {'message': 'The model `qwen/qwen3-8b` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'code': 'model_not_found'}}",
+            "criterion": "evidence_quality"
+          },
+          "factual_accuracy": {
+            "score": 0.0,
+            "reasoning": "Error during evaluation: Error code: 404 - {'error': {'message': 'The model `qwen/qwen3-8b` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'code': 'model_not_found'}}",
+            "criterion": "factual_accuracy"
+          },
+          "safety_compliance": {
+            "score": 0.0,
+            "reasoning": "Error during evaluation: Error code: 404 - {'error': {'message': 'The model `qwen/qwen3-8b` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'code': 'model_not_found'}}",
+            "criterion": "safety_compliance"
+          },
+          "clarity": {
+            "score": 0.0,
+            "reasoning": "Error during evaluation: Error code: 404 - {'error': {'message': 'The model `qwen/qwen3-8b` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'code': 'model_not_found'}}",
+            "criterion": "clarity"
+          }
+        },
+        "feedback": []
+      },
+      "metadata": {
+        "error": true
+      },
+      "ground_truth": null
+    },
+    {
+      "query": "What are ethical considerations in using AI for education?",
+      "response": "An error occurred: asyncio.run() cannot be called from a running event loop",
+      "evaluation": {
+        "query": "What are ethical considerations in using AI for education?",
+        "overall_score": 0.0,
+        "criterion_scores": {
+          "relevance": {
+            "score": 0.0,
+            "reasoning": "Error during evaluation: Error code: 404 - {'error': {'message': 'The model `qwen/qwen3-8b` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'code': 'model_not_found'}}",
+            "criterion": "relevance"
+          },
+          "evidence_quality": {
+            "score": 0.0,
+            "reasoning": "Error during evaluation: Error code: 404 - {'error': {'message': 'The model `qwen/qwen3-8b` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'code': 'model_not_found'}}",
+            "criterion": "evidence_quality"
+          },
+          "factual_accuracy": {
+            "score": 0.0,
+            "reasoning": "Error during evaluation: Error code: 404 - {'error': {'message': 'The model `qwen/qwen3-8b` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'code': 'model_not_found'}}",
+            "criterion": "factual_accuracy"
+          },
+          "safety_compliance": {
+            "score": 0.0,
+            "reasoning": "Error during evaluation: Error code: 404 - {'error': {'message': 'The model `qwen/qwen3-8b` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'code': 'model_not_found'}}",
+            "criterion": "safety_compliance"
+          },
+          "clarity": {
+            "score": 0.0,
+            "reasoning": "Error during evaluation: Error code: 404 - {'error': {'message': 'The model `qwen/qwen3-8b` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'code': 'model_not_found'}}",
+            "criterion": "clarity"
+          }
+        },
+        "feedback": []
+      },
+      "metadata": {
+        "error": true
+      },
+      "ground_truth": null
+    },
+    {
+      "query": "Compare different approaches to measuring user experience in mobile applications",
+      "response": "An error occurred: asyncio.run() cannot be called from a running event loop",
+      "evaluation": {
+        "query": "Compare different approaches to measuring user experience in mobile applications",
+        "overall_score": 0.0,
+        "criterion_scores": {
+          "relevance": {
+            "score": 0.0,
+            "reasoning": "Error during evaluation: Error code: 404 - {'error': {'message': 'The model `qwen/qwen3-8b` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'code': 'model_not_found'}}",
+            "criterion": "relevance"
+          },
+          "evidence_quality": {
+            "score": 0.0,
+            "reasoning": "Error during evaluation: Error code: 404 - {'error': {'message': 'The model `qwen/qwen3-8b` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'code': 'model_not_found'}}",
+            "criterion": "evidence_quality"
+          },
+          "factual_accuracy": {
+            "score": 0.0,
+            "reasoning": "Error during evaluation: Error code: 404 - {'error': {'message': 'The model `qwen/qwen3-8b` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'code': 'model_not_found'}}",
+            "criterion": "factual_accuracy"
+          },
+          "safety_compliance": {
+            "score": 0.0,
+            "reasoning": "Error during evaluation: Error code: 404 - {'error': {'message': 'The model `qwen/qwen3-8b` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'code': 'model_not_found'}}",
+            "criterion": "safety_compliance"
+          },
+          "clarity": {
+            "score": 0.0,
+            "reasoning": "Error during evaluation: Error code: 404 - {'error': {'message': 'The model `qwen/qwen3-8b` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'code': 'model_not_found'}}",
+            "criterion": "clarity"
+          }
+        },
+        "feedback": []
+      },
+      "metadata": {
+        "error": true
+      },
+      "ground_truth": null
+    },
+    {
+      "query": "What are the latest developments in conversational AI for healthcare?",
+      "response": "An error occurred: asyncio.run() cannot be called from a running event loop",
+      "evaluation": {
+        "query": "What are the latest developments in conversational AI for healthcare?",
+        "overall_score": 0.0,
+        "criterion_scores": {
+          "relevance": {
+            "score": 0.0,
+            "reasoning": "Error during evaluation: Error code: 404 - {'error': {'message': 'The model `qwen/qwen3-8b` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'code': 'model_not_found'}}",
+            "criterion": "relevance"
+          },
+          "evidence_quality": {
+            "score": 0.0,
+            "reasoning": "Error during evaluation: Error code: 404 - {'error': {'message': 'The model `qwen/qwen3-8b` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'code': 'model_not_found'}}",
+            "criterion": "evidence_quality"
+          },
+          "factual_accuracy": {
+            "score": 0.0,
+            "reasoning": "Error during evaluation: Error code: 404 - {'error': {'message': 'The model `qwen/qwen3-8b` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'code': 'model_not_found'}}",
+            "criterion": "factual_accuracy"
+          },
+          "safety_compliance": {
+            "score": 0.0,
+            "reasoning": "Error during evaluation: Error code: 404 - {'error': {'message': 'The model `qwen/qwen3-8b` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'code': 'model_not_found'}}",
+            "criterion": "safety_compliance"
+          },
+          "clarity": {
+            "score": 0.0,
+            "reasoning": "Error during evaluation: Error code: 404 - {'error': {'message': 'The model `qwen/qwen3-8b` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'code': 'model_not_found'}}",
+            "criterion": "clarity"
+          }
+        },
+        "feedback": []
+      },
+      "metadata": {
+        "error": true
+      },
+      "ground_truth": null
+    },
+    {
+      "query": "How do design patterns for accessibility differ across web and mobile platforms?",
+      "response": "An error occurred: asyncio.run() cannot be called from a running event loop",
+      "evaluation": {
+        "query": "How do design patterns for accessibility differ across web and mobile platforms?",
+        "overall_score": 0.0,
+        "criterion_scores": {
+          "relevance": {
+            "score": 0.0,
+            "reasoning": "Error during evaluation: Error code: 404 - {'error': {'message': 'The model `qwen/qwen3-8b` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'code': 'model_not_found'}}",
+            "criterion": "relevance"
+          },
+          "evidence_quality": {
+            "score": 0.0,
+            "reasoning": "Error during evaluation: Error code: 404 - {'error': {'message': 'The model `qwen/qwen3-8b` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'code': 'model_not_found'}}",
+            "criterion": "evidence_quality"
+          },
+          "factual_accuracy": {
+            "score": 0.0,
+            "reasoning": "Error during evaluation: Error code: 404 - {'error': {'message': 'The model `qwen/qwen3-8b` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'code': 'model_not_found'}}",
+            "criterion": "factual_accuracy"
+          },
+          "safety_compliance": {
+            "score": 0.0,
+            "reasoning": "Error during evaluation: Error code: 404 - {'error': {'message': 'The model `qwen/qwen3-8b` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'code': 'model_not_found'}}",
+            "criterion": "safety_compliance"
+          },
+          "clarity": {
+            "score": 0.0,
+            "reasoning": "Error during evaluation: Error code: 404 - {'error': {'message': 'The model `qwen/qwen3-8b` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'code': 'model_not_found'}}",
+            "criterion": "clarity"
+          }
+        },
+        "feedback": []
+      },
+      "metadata": {
+        "error": true
+      },
+      "ground_truth": null
+    },
+    {
+      "query": "What are best practices for visualizing uncertainty in data displays?",
+      "response": "An error occurred: asyncio.run() cannot be called from a running event loop",
+      "evaluation": {
+        "query": "What are best practices for visualizing uncertainty in data displays?",
+        "overall_score": 0.0,
+        "criterion_scores": {
+          "relevance": {
+            "score": 0.0,
+            "reasoning": "Error during evaluation: Error code: 404 - {'error': {'message': 'The model `qwen/qwen3-8b` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'code': 'model_not_found'}}",
+            "criterion": "relevance"
+          },
+          "evidence_quality": {
+            "score": 0.0,
+            "reasoning": "Error during evaluation: Error code: 404 - {'error': {'message': 'The model `qwen/qwen3-8b` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'code': 'model_not_found'}}",
+            "criterion": "evidence_quality"
+          },
+          "factual_accuracy": {
+            "score": 0.0,
+            "reasoning": "Error during evaluation: Error code: 404 - {'error': {'message': 'The model `qwen/qwen3-8b` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'code': 'model_not_found'}}",
+            "criterion": "factual_accuracy"
+          },
+          "safety_compliance": {
+            "score": 0.0,
+            "reasoning": "Error during evaluation: Error code: 404 - {'error': {'message': 'The model `qwen/qwen3-8b` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'code': 'model_not_found'}}",
+            "criterion": "safety_compliance"
+          },
+          "clarity": {
+            "score": 0.0,
+            "reasoning": "Error during evaluation: Error code: 404 - {'error': {'message': 'The model `qwen/qwen3-8b` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'code': 'model_not_found'}}",
+            "criterion": "clarity"
+          }
+        },
+        "feedback": []
+      },
+      "metadata": {
+        "error": true
+      },
+      "ground_truth": null
+    },
+    {
+      "query": "How can voice interfaces be designed for elderly users?",
+      "response": "An error occurred: asyncio.run() cannot be called from a running event loop",
+      "evaluation": {
+        "query": "How can voice interfaces be designed for elderly users?",
+        "overall_score": 0.0,
+        "criterion_scores": {
+          "relevance": {
+            "score": 0.0,
+            "reasoning": "Error during evaluation: Error code: 404 - {'error': {'message': 'The model `qwen/qwen3-8b` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'code': 'model_not_found'}}",
+            "criterion": "relevance"
+          },
+          "evidence_quality": {
+            "score": 0.0,
+            "reasoning": "Error during evaluation: Error code: 404 - {'error': {'message': 'The model `qwen/qwen3-8b` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'code': 'model_not_found'}}",
+            "criterion": "evidence_quality"
+          },
+          "factual_accuracy": {
+            "score": 0.0,
+            "reasoning": "Error during evaluation: Error code: 404 - {'error': {'message': 'The model `qwen/qwen3-8b` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'code': 'model_not_found'}}",
+            "criterion": "factual_accuracy"
+          },
+          "safety_compliance": {
+            "score": 0.0,
+            "reasoning": "Error during evaluation: Error code: 404 - {'error': {'message': 'The model `qwen/qwen3-8b` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'code': 'model_not_found'}}",
+            "criterion": "safety_compliance"
+          },
+          "clarity": {
+            "score": 0.0,
+            "reasoning": "Error during evaluation: Error code: 404 - {'error': {'message': 'The model `qwen/qwen3-8b` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'code': 'model_not_found'}}",
+            "criterion": "clarity"
+          }
+        },
+        "feedback": []
+      },
+      "metadata": {
+        "error": true
+      },
+      "ground_truth": null
+    },
+    {
+      "query": "What are emerging trends in AI-driven prototyping tools?",
+      "response": "An error occurred: asyncio.run() cannot be called from a running event loop",
+      "evaluation": {
+        "query": "What are emerging trends in AI-driven prototyping tools?",
+        "overall_score": 0.0,
+        "criterion_scores": {
+          "relevance": {
+            "score": 0.0,
+            "reasoning": "Error during evaluation: Error code: 404 - {'error': {'message': 'The model `qwen/qwen3-8b` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'code': 'model_not_found'}}",
+            "criterion": "relevance"
+          },
+          "evidence_quality": {
+            "score": 0.0,
+            "reasoning": "Error during evaluation: Error code: 404 - {'error': {'message': 'The model `qwen/qwen3-8b` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'code': 'model_not_found'}}",
+            "criterion": "evidence_quality"
+          },
+          "factual_accuracy": {
+            "score": 0.0,
+            "reasoning": "Error during evaluation: Error code: 404 - {'error': {'message': 'The model `qwen/qwen3-8b` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'code': 'model_not_found'}}",
+            "criterion": "factual_accuracy"
+          },
+          "safety_compliance": {
+            "score": 0.0,
+            "reasoning": "Error during evaluation: Error code: 404 - {'error': {'message': 'The model `qwen/qwen3-8b` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'code': 'model_not_found'}}",
+            "criterion": "safety_compliance"
+          },
+          "clarity": {
+            "score": 0.0,
+            "reasoning": "Error during evaluation: Error code: 404 - {'error': {'message': 'The model `qwen/qwen3-8b` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'code': 'model_not_found'}}",
+            "criterion": "clarity"
+          }
+        },
+        "feedback": []
+      },
+      "metadata": {
+        "error": true
+      },
+      "ground_truth": null
+    },
+    {
+      "query": "How do cultural factors influence mobile app design?",
+      "response": "An error occurred: asyncio.run() cannot be called from a running event loop",
+      "evaluation": {
+        "query": "How do cultural factors influence mobile app design?",
+        "overall_score": 0.0,
+        "criterion_scores": {
+          "relevance": {
+            "score": 0.0,
+            "reasoning": "Error during evaluation: Error code: 404 - {'error': {'message': 'The model `qwen/qwen3-8b` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'code': 'model_not_found'}}",
+            "criterion": "relevance"
+          },
+          "evidence_quality": {
+            "score": 0.0,
+            "reasoning": "Error during evaluation: Error code: 404 - {'error': {'message': 'The model `qwen/qwen3-8b` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'code': 'model_not_found'}}",
+            "criterion": "evidence_quality"
+          },
+          "factual_accuracy": {
+            "score": 0.0,
+            "reasoning": "Error during evaluation: Error code: 404 - {'error': {'message': 'The model `qwen/qwen3-8b` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'code': 'model_not_found'}}",
+            "criterion": "factual_accuracy"
+          },
+          "safety_compliance": {
+            "score": 0.0,
+            "reasoning": "Error during evaluation: Error code: 404 - {'error': {'message': 'The model `qwen/qwen3-8b` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'code': 'model_not_found'}}",
+            "criterion": "safety_compliance"
+          },
+          "clarity": {
+            "score": 0.0,
+            "reasoning": "Error during evaluation: Error code: 404 - {'error': {'message': 'The model `qwen/qwen3-8b` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'code': 'model_not_found'}}",
+            "criterion": "clarity"
+          }
+        },
+        "feedback": []
+      },
+      "metadata": {
+        "error": true
+      },
+      "ground_truth": null
+    }
+  ]
+}
